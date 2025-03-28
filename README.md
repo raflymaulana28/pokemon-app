@@ -137,8 +137,6 @@ export { fetchPokemonList };
 ## Future Improvements
 
 - **Pagination**: Add pagination to handle a larger list of Pokémon dynamically.
-- **Search**: Add a search feature to filter Pokémon by name or type.
-- **Pokémon Details**: Add a detail page for each Pokémon to show more information, such as stats and abilities.
 
 ## Contributing
 
