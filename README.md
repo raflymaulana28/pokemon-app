@@ -119,19 +119,21 @@ This application uses the **Pokémon API** (https://pokeapi.co/) to fetch data a
 This is how the app fetches Pokémon data from the API in the `src/services/api.ts` file:
 
 ```typescript
-import axios from 'axios';
-
-const fetchPokemonList = async (limit: number = 10, offset: number = 0) => {
-  try {
-    const response = await axios.get(`https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`);
-    return response.data.results;
-  } catch (error) {
-    console.error("Error fetching Pokémon data:", error);
-    throw error;
-  }
+import axios from "axios";
+const axiosInstance = axios.create({
+  baseURL: "https://pokeapi.co/api/v2",
+});
+interface Params {
+  limit: number;
+  offset: number;
+}
+export const getPokemonList = async (params: Params) => {
+  const response = await axiosInstance.get("/pokemon", {
+    params,
+  });
+  return response.data;
 };
 
-export { fetchPokemonList };
 ```
 
 ## Future Improvements
